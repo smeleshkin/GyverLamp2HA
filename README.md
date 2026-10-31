@@ -80,5 +80,6 @@ data:
 Python 3.14, проверено на Home Assistant 2026.10.4. Фронт — TypeScript и Lit; готовый JS входит в компонент.
 
 - [Сборка фронта](frontend/README.md)
-- [Проверки и сборка выпуска](docs/development.md)
+- [Разработка и проверки](docs/development.md)
+- [Выпуск новой версии](docs/releasing.md)
 - [Протокол](docs/protocol.md)
