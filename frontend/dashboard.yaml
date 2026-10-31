@@ -1,0 +1,16 @@
+{
+  "title": "GyverLamp2",
+  "views": [
+    {
+      "title": "Лампа",
+      "path": "lamp",
+      "icon": "mdi:lava-lamp",
+      "cards": [
+        {
+          "type": "custom:gyverlamp2-card",
+          "entity": "light.gyverlamp2"
+        }
+      ]
+    }
+  ]
+}

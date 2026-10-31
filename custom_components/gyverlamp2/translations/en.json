@@ -1,0 +1,136 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "GyverLamp2",
+        "description": "HA owns the settings of 10 modes. The first mode command replaces the lamp mode bank. No app presets or custom-palette editor. Built-in palette selection is supported. Disable heartbeat requirement for one-way control if broadcasts are unavailable. Slave is optional: it can set global brightness to 255; otherwise per-mode brightness is limited by the existing global lamp brightness.",
+        "data": {
+          "name": "Name",
+          "host": "Lamp IPv4 address",
+          "group": "Group (1–10)",
+          "network_key": "Network key (usually GL)",
+          "slave_mode": "Lamp is Slave (normalize global brightness)",
+          "require_heartbeat": "Require presence heartbeats"
+        }
+      }
+    },
+    "error": {
+      "invalid_settings": "Check IPv4, group and key.",
+      "cannot_listen": "Could not open the UDP port; it may be in use.",
+      "no_heartbeat": "No heartbeat received. Check address, group, key and LAN broadcasts. Unconfirmed presence mode is available if needed.",
+      "already_configured": "This address is already configured."
+    },
+    "abort": {
+      "already_configured": "This address is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "GyverLamp2",
+        "description": "HA owns the settings of 10 modes. The first mode command replaces the lamp mode bank. No app presets or custom-palette editor. Built-in palette selection is supported. Disable heartbeat requirement for one-way control if broadcasts are unavailable. Slave is optional: it can set global brightness to 255; otherwise per-mode brightness is limited by the existing global lamp brightness.",
+        "data": {
+          "name": "Name",
+          "host": "Lamp IPv4 address",
+          "group": "Group (1–10)",
+          "network_key": "Network key (usually GL)",
+          "slave_mode": "Lamp is Slave (normalize global brightness)",
+          "require_heartbeat": "Require presence heartbeats"
+        }
+      }
+    },
+    "error": {
+      "invalid_settings": "Check IPv4, group and key.",
+      "cannot_listen": "Could not open the UDP port; it may be in use.",
+      "no_heartbeat": "No heartbeat received. Check address, group, key and LAN broadcasts. Unconfirmed presence mode is available if needed.",
+      "already_configured": "This address is already configured."
+    }
+  },
+  "entity": {
+    "button": {
+      "next_preset": {
+        "name": "Next mode"
+      },
+      "previous_preset": {
+        "name": "Previous mode"
+      }
+    },
+    "sensor": {
+      "current_preset": {
+        "name": "Observed slot"
+      }
+    },
+    "select": {
+      "mode": {
+        "name": "HA mode"
+      },
+      "palette": {
+        "name": "Palette"
+      },
+      "color_source": {
+        "name": "Color source",
+        "state": {
+          "hue": "Hue",
+          "palette": "Palette"
+        }
+      }
+    },
+    "number": {
+      "speed": {
+        "name": "Speed"
+      },
+      "scale": {
+        "name": "Scale"
+      },
+      "hue": {
+        "name": "Hue"
+      },
+      "saturation": {
+        "name": "Saturation"
+      }
+    },
+    "switch": {
+      "from_center": {
+        "name": "From center"
+      }
+    }
+  },
+  "services": {
+    "set_mode": {
+      "name": "Set mode",
+      "description": "Save mode settings in HA and send its bank to the lamp. Firmware does not acknowledge writes.",
+      "fields": {
+        "mode": {
+          "name": "Mode"
+        },
+        "turn_on": {
+          "name": "Turn on"
+        },
+        "brightness": {
+          "name": "Brightness"
+        },
+        "speed": {
+          "name": "Speed"
+        },
+        "scale": {
+          "name": "Scale"
+        },
+        "hue": {
+          "name": "Hue"
+        },
+        "saturation": {
+          "name": "Saturation"
+        },
+        "from_center": {
+          "name": "From center"
+        },
+        "palette": {
+          "name": "Built-in palette"
+        },
+        "color_source": {
+          "name": "Color source"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+[
+  {
+    "id": "gl2-demo",
+    "type": "tab",
+    "label": "GyverLamp2 — режимы HA",
+    "disabled": true,
+    "info": "Выберите свой сервер HA и entity_id. Ручные Inject-кнопки, без запуска при импорте. Питание и настройки предполагаемые."
+  },
+  {
+    "id": "gl2-in-0",
+    "type": "inject",
+    "z": "gl2-demo",
+    "name": "Синий цвет",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "payload": "{\"mode\": \"color\", \"hue\": 240, \"saturation\": 100, \"brightness\": 180, \"turn_on\": true}",
+    "payloadType": "json",
+    "x": 200,
+    "y": 100,
+    "wires": [
+      [
+        "gl2-mode-action"
+      ]
+    ]
+  },
+  {
+    "id": "gl2-in-1",
+    "type": "inject",
+    "z": "gl2-demo",
+    "name": "Частицы",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "payload": "{\"mode\": \"particles\", \"hue\": 30, \"speed\": 80, \"scale\": 120, \"brightness\": 200, \"turn_on\": true}",
+    "payloadType": "json",
+    "x": 200,
+    "y": 200,
+    "wires": [
+      [
+        "gl2-mode-action"
+      ]
+    ]
+  },
+  {
+    "id": "gl2-in-2",
+    "type": "inject",
+    "z": "gl2-demo",
+    "name": "Сохранить скорость частиц",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "payload": "{\"mode\": \"particles\", \"speed\": 40}",
+    "payloadType": "json",
+    "x": 200,
+    "y": 300,
+    "wires": [
+      [
+        "gl2-mode-action"
+      ]
+    ]
+  },
+  {
+    "id": "gl2-mode-action",
+    "type": "api-call-service",
+    "z": "gl2-demo",
+    "name": "Задать режим и параметры",
+    "server": "gl2-ha-server",
+    "version": 7,
+    "action": "gyverlamp2.set_mode",
+    "entityId": [
+      "light.gyverlamp2"
+    ],
+    "floorId": [],
+    "areaId": [],
+    "deviceId": [],
+    "labelId": [],
+    "data": "payload",
+    "dataType": "jsonata",
+    "queue": "none",
+    "blockInputOverrides": true,
+    "outputProperties": [],
+    "x": 530,
+    "y": 200,
+    "wires": [
+      [
+        "gl2-result"
+      ]
+    ]
+  },
+  {
+    "id": "gl2-result",
+    "type": "debug",
+    "z": "gl2-demo",
+    "name": "Отправлено, не подтверждено",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "x": 850,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "gl2-catch",
+    "type": "catch",
+    "z": "gl2-demo",
+    "name": "Ошибка параметров или связи",
+    "scope": [
+      "gl2-mode-action"
+    ],
+    "uncaught": false,
+    "x": 550,
+    "y": 360,
+    "wires": [
+      [
+        "gl2-result"
+      ]
+    ]
+  },
+  {
+    "id": "gl2-ha-server",
+    "type": "server",
+    "name": "Home Assistant — выберите свой сервер",
+    "version": 6,
+    "addon": true
+  }
+]

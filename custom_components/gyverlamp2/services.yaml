@@ -1,0 +1,59 @@
+set_mode:
+  target:
+    entity:
+      integration: gyverlamp2
+      domain: light
+  fields:
+    mode:
+      example: particles
+      selector:
+        text: null
+    turn_on:
+      default: false
+      selector:
+        boolean: null
+    brightness:
+      selector:
+        number:
+          min: 1
+          max: 255
+          step: 1
+    speed:
+      selector:
+        number:
+          min: 0
+          max: 255
+          step: 1
+    scale:
+      selector:
+        number:
+          min: 0
+          max: 255
+          step: 1
+    hue:
+      selector:
+        number:
+          min: 0
+          max: 360
+          step: 1
+          unit_of_measurement: °
+    saturation:
+      selector:
+        number:
+          min: 0
+          max: 100
+          step: 1
+          unit_of_measurement: '%'
+    from_center:
+      selector:
+        boolean: null
+    palette:
+      example: ocean
+      selector:
+        text: {}
+    color_source:
+      selector:
+        select:
+          options:
+          - hue
+          - palette
